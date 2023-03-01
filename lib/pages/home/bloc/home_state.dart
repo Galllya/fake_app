@@ -10,6 +10,5 @@ class HomeState with _$HomeState {
     required MealModel snack,
     required MealModel dinner,
     required MealModel supper,
-    required int currentDay,
   }) = _Load;
 }

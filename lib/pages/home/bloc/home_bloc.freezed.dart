@@ -173,8 +173,7 @@ mixin _$HomeState {
             MealModel breakfast,
             MealModel snack,
             MealModel dinner,
-            MealModel supper,
-            int currentDay)
+            MealModel supper)
         load,
   }) =>
       throw _privateConstructorUsedError;
@@ -187,8 +186,7 @@ mixin _$HomeState {
             MealModel breakfast,
             MealModel snack,
             MealModel dinner,
-            MealModel supper,
-            int currentDay)?
+            MealModel supper)?
         load,
   }) =>
       throw _privateConstructorUsedError;
@@ -201,8 +199,7 @@ mixin _$HomeState {
             MealModel breakfast,
             MealModel snack,
             MealModel dinner,
-            MealModel supper,
-            int currentDay)?
+            MealModel supper)?
         load,
     required TResult orElse(),
   }) =>
@@ -289,8 +286,7 @@ class _$_Initial implements _Initial {
             MealModel breakfast,
             MealModel snack,
             MealModel dinner,
-            MealModel supper,
-            int currentDay)
+            MealModel supper)
         load,
   }) {
     return initial();
@@ -306,8 +302,7 @@ class _$_Initial implements _Initial {
             MealModel breakfast,
             MealModel snack,
             MealModel dinner,
-            MealModel supper,
-            int currentDay)?
+            MealModel supper)?
         load,
   }) {
     return initial?.call();
@@ -323,8 +318,7 @@ class _$_Initial implements _Initial {
             MealModel breakfast,
             MealModel snack,
             MealModel dinner,
-            MealModel supper,
-            int currentDay)?
+            MealModel supper)?
         load,
     required TResult orElse(),
   }) {
@@ -381,8 +375,7 @@ abstract class _$$_LoadCopyWith<$Res> {
       MealModel breakfast,
       MealModel snack,
       MealModel dinner,
-      MealModel supper,
-      int currentDay});
+      MealModel supper});
 }
 
 /// @nodoc
@@ -400,7 +393,6 @@ class __$$_LoadCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res, _$_Load>
     Object? snack = null,
     Object? dinner = null,
     Object? supper = null,
-    Object? currentDay = null,
   }) {
     return _then(_$_Load(
       exercises: null == exercises
@@ -427,10 +419,6 @@ class __$$_LoadCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res, _$_Load>
           ? _value.supper
           : supper // ignore: cast_nullable_to_non_nullable
               as MealModel,
-      currentDay: null == currentDay
-          ? _value.currentDay
-          : currentDay // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
@@ -444,8 +432,7 @@ class _$_Load implements _Load {
       required this.breakfast,
       required this.snack,
       required this.dinner,
-      required this.supper,
-      required this.currentDay})
+      required this.supper})
       : _exercises = exercises,
         _muscles = muscles;
 
@@ -473,12 +460,10 @@ class _$_Load implements _Load {
   final MealModel dinner;
   @override
   final MealModel supper;
-  @override
-  final int currentDay;
 
   @override
   String toString() {
-    return 'HomeState.load(exercises: $exercises, muscles: $muscles, breakfast: $breakfast, snack: $snack, dinner: $dinner, supper: $supper, currentDay: $currentDay)';
+    return 'HomeState.load(exercises: $exercises, muscles: $muscles, breakfast: $breakfast, snack: $snack, dinner: $dinner, supper: $supper)';
   }
 
   @override
@@ -493,9 +478,7 @@ class _$_Load implements _Load {
                 other.breakfast == breakfast) &&
             (identical(other.snack, snack) || other.snack == snack) &&
             (identical(other.dinner, dinner) || other.dinner == dinner) &&
-            (identical(other.supper, supper) || other.supper == supper) &&
-            (identical(other.currentDay, currentDay) ||
-                other.currentDay == currentDay));
+            (identical(other.supper, supper) || other.supper == supper));
   }
 
   @override
@@ -506,8 +489,7 @@ class _$_Load implements _Load {
       breakfast,
       snack,
       dinner,
-      supper,
-      currentDay);
+      supper);
 
   @JsonKey(ignore: true)
   @override
@@ -525,12 +507,10 @@ class _$_Load implements _Load {
             MealModel breakfast,
             MealModel snack,
             MealModel dinner,
-            MealModel supper,
-            int currentDay)
+            MealModel supper)
         load,
   }) {
-    return load(
-        exercises, muscles, breakfast, snack, dinner, supper, currentDay);
+    return load(exercises, muscles, breakfast, snack, dinner, supper);
   }
 
   @override
@@ -543,12 +523,10 @@ class _$_Load implements _Load {
             MealModel breakfast,
             MealModel snack,
             MealModel dinner,
-            MealModel supper,
-            int currentDay)?
+            MealModel supper)?
         load,
   }) {
-    return load?.call(
-        exercises, muscles, breakfast, snack, dinner, supper, currentDay);
+    return load?.call(exercises, muscles, breakfast, snack, dinner, supper);
   }
 
   @override
@@ -561,14 +539,12 @@ class _$_Load implements _Load {
             MealModel breakfast,
             MealModel snack,
             MealModel dinner,
-            MealModel supper,
-            int currentDay)?
+            MealModel supper)?
         load,
     required TResult orElse(),
   }) {
     if (load != null) {
-      return load(
-          exercises, muscles, breakfast, snack, dinner, supper, currentDay);
+      return load(exercises, muscles, breakfast, snack, dinner, supper);
     }
     return orElse();
   }
@@ -612,8 +588,7 @@ abstract class _Load implements HomeState {
       required final MealModel breakfast,
       required final MealModel snack,
       required final MealModel dinner,
-      required final MealModel supper,
-      required final int currentDay}) = _$_Load;
+      required final MealModel supper}) = _$_Load;
 
   List<ExerciseModel> get exercises;
   List<MuscleModel> get muscles;
@@ -621,7 +596,6 @@ abstract class _Load implements HomeState {
   MealModel get snack;
   MealModel get dinner;
   MealModel get supper;
-  int get currentDay;
   @JsonKey(ignore: true)
   _$$_LoadCopyWith<_$_Load> get copyWith => throw _privateConstructorUsedError;
 }

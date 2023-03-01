@@ -15,10 +15,6 @@ class ConfigRepository extends IConfigRepository {
   @override
   Future<FirebaseRemoteConfig> initRemoteConfig() async {
     final remoteConfig = FirebaseRemoteConfig.instance;
-    await remoteConfig.setConfigSettings(RemoteConfigSettings(
-      fetchTimeout: const Duration(seconds: 1),
-      minimumFetchInterval: const Duration(seconds: 1),
-    ));
 
     return remoteConfig;
   }

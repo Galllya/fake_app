@@ -14,8 +14,12 @@ class BaseBackGround extends StatelessWidget {
         body: Stack(
           alignment: Alignment.center,
           children: [
-            Image.asset('assets/images/img_prev.jpg',
-                fit: BoxFit.fill, height: MediaQuery.of(context).size.height),
+            Image.asset(
+              'assets/images/img_prev.jpg',
+              fit: BoxFit.fill,
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+            ),
             Container(
               width: double.infinity,
               decoration: const BoxDecoration(

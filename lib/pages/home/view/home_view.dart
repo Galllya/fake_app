@@ -36,31 +36,11 @@ class HomeView extends StatelessWidget {
             snack,
             dinner,
             supper,
-            currentDay,
           ) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: ListView(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Row(
-                      children: [
-                        CircleAvatar(
-                          backgroundColor: AppColors.primary,
-                          radius: 30,
-                          child: Text(
-                            '$currentDay/30',
-                            style: TextStyleCustom.whiteTitle,
-                          ),
-                        ),
-                        Text(
-                          ' day',
-                          style: TextStyleCustom.subTitleBody,
-                        ),
-                      ],
-                    ),
-                  ),
                   Text(
                     'Daily workout:',
                     style: TextStyleCustom.titleBody,

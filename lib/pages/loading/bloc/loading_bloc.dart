@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:fake_app/repository/config/i_config_repository.dart';
 import 'package:fake_app/repository/emulator/i_emulator_repository.dart';
 import 'package:fake_app/repository/internet/i_internet_repository.dart';
+import 'package:fake_app/repository/save_info/i_save_info_repository.dart';
 import 'package:fake_app/repository/save_link/i_save_link_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -13,19 +14,24 @@ class LoadingBloc extends Bloc<LoadingEvent, LoadingState> {
   final IConfigRepository configRepository;
   final IInternetRepository internetRepository;
   final ISaveLinkRepository saveLinkRepository;
+  final ISaveRepository saveRepository;
   final IEmulatorRepository emulatorRepository;
   LoadingBloc({
     required this.configRepository,
     required this.internetRepository,
     required this.saveLinkRepository,
     required this.emulatorRepository,
+    required this.saveRepository,
   }) : super(const _Initial()) {
     on<LoadingEvent>((event, emit) async {
       if (event is _Started) {
         final isEmulator = await emulatorRepository.checkIsEmu();
         final haveInternet = await internetRepository.haveInternet();
         final haveSaveLink = saveLinkRepository.getLink();
-        // final haveSim = await emulatorRepository.haveSim();
+        final intoWasShow = saveRepository.getWasShow();
+        if (!intoWasShow) {
+          saveRepository.saveWasShow();
+        }
 
         if (haveSaveLink != null) {
           if (haveInternet) {
@@ -45,7 +51,9 @@ class LoadingBloc extends Bloc<LoadingEvent, LoadingState> {
             );
 
             if (config.url == '' || isEmulator) {
-              emit(const LoadingState.showPlug());
+              emit(LoadingState.showPlug(
+                introWasShow: intoWasShow,
+              ));
             } else {
               saveLinkRepository.saveLink(
                 link: config.url,

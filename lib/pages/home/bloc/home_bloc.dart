@@ -28,7 +28,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           final dayValue = DateTime.now().day;
           final bool isPer = dayValue % 2 == 0;
 
-          saveRepository.saveFirstDay();
           final exercises = exercisesRepository.getExercises();
           final List<ExerciseModel> todayExercises = [];
 
@@ -44,7 +43,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           final dinner = menuRepository.getDinner();
           final snack = menuRepository.getSnack();
           final supper = menuRepository.getSupper();
-          final int currentDay = saveRepository.getCurrentDay();
           emit(
             HomeState.load(
               exercises: todayExercises,
@@ -53,7 +51,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               dinner: isPer ? dinner.first : dinner.last,
               snack: isPer ? snack.first : snack.last,
               supper: isPer ? supper.first : supper.last,
-              currentDay: currentDay,
             ),
           );
         }

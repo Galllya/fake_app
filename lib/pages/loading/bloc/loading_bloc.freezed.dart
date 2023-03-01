@@ -169,7 +169,7 @@ mixin _$LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() showNoInternet,
-    required TResult Function() showPlug,
+    required TResult Function(bool introWasShow) showPlug,
     required TResult Function(String url) showWebView,
     required TResult Function() showConfigError,
   }) =>
@@ -178,7 +178,7 @@ mixin _$LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? showNoInternet,
-    TResult? Function()? showPlug,
+    TResult? Function(bool introWasShow)? showPlug,
     TResult? Function(String url)? showWebView,
     TResult? Function()? showConfigError,
   }) =>
@@ -187,7 +187,7 @@ mixin _$LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? showNoInternet,
-    TResult Function()? showPlug,
+    TResult Function(bool introWasShow)? showPlug,
     TResult Function(String url)? showWebView,
     TResult Function()? showConfigError,
     required TResult orElse(),
@@ -280,7 +280,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() showNoInternet,
-    required TResult Function() showPlug,
+    required TResult Function(bool introWasShow) showPlug,
     required TResult Function(String url) showWebView,
     required TResult Function() showConfigError,
   }) {
@@ -292,7 +292,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? showNoInternet,
-    TResult? Function()? showPlug,
+    TResult? Function(bool introWasShow)? showPlug,
     TResult? Function(String url)? showWebView,
     TResult? Function()? showConfigError,
   }) {
@@ -304,7 +304,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? showNoInternet,
-    TResult Function()? showPlug,
+    TResult Function(bool introWasShow)? showPlug,
     TResult Function(String url)? showWebView,
     TResult Function()? showConfigError,
     required TResult orElse(),
@@ -400,7 +400,7 @@ class _$_ShowNoInternet implements _ShowNoInternet {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() showNoInternet,
-    required TResult Function() showPlug,
+    required TResult Function(bool introWasShow) showPlug,
     required TResult Function(String url) showWebView,
     required TResult Function() showConfigError,
   }) {
@@ -412,7 +412,7 @@ class _$_ShowNoInternet implements _ShowNoInternet {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? showNoInternet,
-    TResult? Function()? showPlug,
+    TResult? Function(bool introWasShow)? showPlug,
     TResult? Function(String url)? showWebView,
     TResult? Function()? showConfigError,
   }) {
@@ -424,7 +424,7 @@ class _$_ShowNoInternet implements _ShowNoInternet {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? showNoInternet,
-    TResult Function()? showPlug,
+    TResult Function(bool introWasShow)? showPlug,
     TResult Function(String url)? showWebView,
     TResult Function()? showConfigError,
     required TResult orElse(),
@@ -485,6 +485,8 @@ abstract class _$$_ShowPlugCopyWith<$Res> {
   factory _$$_ShowPlugCopyWith(
           _$_ShowPlug value, $Res Function(_$_ShowPlug) then) =
       __$$_ShowPlugCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool introWasShow});
 }
 
 /// @nodoc
@@ -494,37 +496,62 @@ class __$$_ShowPlugCopyWithImpl<$Res>
   __$$_ShowPlugCopyWithImpl(
       _$_ShowPlug _value, $Res Function(_$_ShowPlug) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? introWasShow = null,
+  }) {
+    return _then(_$_ShowPlug(
+      introWasShow: null == introWasShow
+          ? _value.introWasShow
+          : introWasShow // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_ShowPlug implements _ShowPlug {
-  const _$_ShowPlug();
+  const _$_ShowPlug({required this.introWasShow});
+
+  @override
+  final bool introWasShow;
 
   @override
   String toString() {
-    return 'LoadingState.showPlug()';
+    return 'LoadingState.showPlug(introWasShow: $introWasShow)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ShowPlug);
+        (other.runtimeType == runtimeType &&
+            other is _$_ShowPlug &&
+            (identical(other.introWasShow, introWasShow) ||
+                other.introWasShow == introWasShow));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, introWasShow);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ShowPlugCopyWith<_$_ShowPlug> get copyWith =>
+      __$$_ShowPlugCopyWithImpl<_$_ShowPlug>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() showNoInternet,
-    required TResult Function() showPlug,
+    required TResult Function(bool introWasShow) showPlug,
     required TResult Function(String url) showWebView,
     required TResult Function() showConfigError,
   }) {
-    return showPlug();
+    return showPlug(introWasShow);
   }
 
   @override
@@ -532,11 +559,11 @@ class _$_ShowPlug implements _ShowPlug {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? showNoInternet,
-    TResult? Function()? showPlug,
+    TResult? Function(bool introWasShow)? showPlug,
     TResult? Function(String url)? showWebView,
     TResult? Function()? showConfigError,
   }) {
-    return showPlug?.call();
+    return showPlug?.call(introWasShow);
   }
 
   @override
@@ -544,13 +571,13 @@ class _$_ShowPlug implements _ShowPlug {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? showNoInternet,
-    TResult Function()? showPlug,
+    TResult Function(bool introWasShow)? showPlug,
     TResult Function(String url)? showWebView,
     TResult Function()? showConfigError,
     required TResult orElse(),
   }) {
     if (showPlug != null) {
-      return showPlug();
+      return showPlug(introWasShow);
     }
     return orElse();
   }
@@ -597,7 +624,12 @@ class _$_ShowPlug implements _ShowPlug {
 }
 
 abstract class _ShowPlug implements LoadingState {
-  const factory _ShowPlug() = _$_ShowPlug;
+  const factory _ShowPlug({required final bool introWasShow}) = _$_ShowPlug;
+
+  bool get introWasShow;
+  @JsonKey(ignore: true)
+  _$$_ShowPlugCopyWith<_$_ShowPlug> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -666,7 +698,7 @@ class _$_ShowWebView implements _ShowWebView {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() showNoInternet,
-    required TResult Function() showPlug,
+    required TResult Function(bool introWasShow) showPlug,
     required TResult Function(String url) showWebView,
     required TResult Function() showConfigError,
   }) {
@@ -678,7 +710,7 @@ class _$_ShowWebView implements _ShowWebView {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? showNoInternet,
-    TResult? Function()? showPlug,
+    TResult? Function(bool introWasShow)? showPlug,
     TResult? Function(String url)? showWebView,
     TResult? Function()? showConfigError,
   }) {
@@ -690,7 +722,7 @@ class _$_ShowWebView implements _ShowWebView {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? showNoInternet,
-    TResult Function()? showPlug,
+    TResult Function(bool introWasShow)? showPlug,
     TResult Function(String url)? showWebView,
     TResult Function()? showConfigError,
     required TResult orElse(),
@@ -791,7 +823,7 @@ class _$_ShowConfigError implements _ShowConfigError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() showNoInternet,
-    required TResult Function() showPlug,
+    required TResult Function(bool introWasShow) showPlug,
     required TResult Function(String url) showWebView,
     required TResult Function() showConfigError,
   }) {
@@ -803,7 +835,7 @@ class _$_ShowConfigError implements _ShowConfigError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? showNoInternet,
-    TResult? Function()? showPlug,
+    TResult? Function(bool introWasShow)? showPlug,
     TResult? Function(String url)? showWebView,
     TResult? Function()? showConfigError,
   }) {
@@ -815,7 +847,7 @@ class _$_ShowConfigError implements _ShowConfigError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? showNoInternet,
-    TResult Function()? showPlug,
+    TResult Function(bool introWasShow)? showPlug,
     TResult Function(String url)? showWebView,
     TResult Function()? showConfigError,
     required TResult orElse(),

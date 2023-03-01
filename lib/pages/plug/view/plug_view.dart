@@ -11,7 +11,7 @@ class PlugView extends StatelessWidget {
     return BaseBackGround(
       widgets: [
         Text(
-          'Lose weight in 30 days',
+          'Lose weight',
           textAlign: TextAlign.center,
           style: TextStyleCustom.titleBody,
         ),

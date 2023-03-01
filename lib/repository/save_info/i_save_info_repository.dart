@@ -1,4 +1,4 @@
 abstract class ISaveRepository {
-  void saveFirstDay();
-  int getCurrentDay();
+  void saveWasShow();
+  bool getWasShow();
 }
