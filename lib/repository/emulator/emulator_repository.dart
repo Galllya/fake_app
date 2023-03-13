@@ -1,6 +1,5 @@
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:fake_app/repository/emulator/i_emulator_repository.dart';
-import 'package:sim_data/sim_data.dart';
 
 class EmulatorRepository extends IEmulatorRepository {
   @override
@@ -34,19 +33,5 @@ class EmulatorRepository extends IEmulatorRepository {
     if (result) return true;
     result = result || ("google_sdk" == buildProduct);
     return result;
-  }
-
-  @override
-  Future<bool> haveSim() async {
-    try {
-      SimData simData = await SimDataPlugin.getSimData();
-      if (simData.cards.isEmpty) {
-        return false;
-      } else {
-        return true;
-      }
-    } catch (_) {
-      return false;
-    }
   }
 }

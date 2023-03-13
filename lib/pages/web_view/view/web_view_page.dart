@@ -44,7 +44,11 @@ class _WebViewPageState extends State<WebViewPage> {
       body: SafeArea(
         child: WillPopScope(
           onWillPop: () async {
-            webViewController.goBack();
+            final currentUrl = await webViewController.currentUrl();
+
+            if (currentUrl != widget.url) {
+              webViewController.goBack();
+            }
             return false;
           },
           child: WebViewWidget(
